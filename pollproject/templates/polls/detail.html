@@ -9,15 +9,14 @@
 </p>
 {% endif %}
 
-<form action="{% url 'polls:vote' question.id %}" method="POST">
-    <!-- CROSS SITE PROTECTION against forgery so request can't be sent from other sites  -->
+<form action="{% url 'polls:vote' question.id %}" method="post">
     {% csrf_token %}
     {% for choice in question.choice_set.all %}
         <div class="form-check">
             <input 
                 type="radio" 
                 name="choice" 
-                class="form_check-input" 
+                class="form-check-input" 
                 id="choice{{ forloop.counter }}" 
                 value="{{ choice.id }}"
             />

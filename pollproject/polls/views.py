@@ -36,7 +36,7 @@ def vote(request, question_id):
         # Redisplay the question voting form.
         return render(request, 'polls/detail.html', {
             'question': question,
-            'error_message': "You didn't select a choice"
+            'error_message': "You didn't select a choice",
         })
     else:
         selected_choice.votes += 1
@@ -44,5 +44,6 @@ def vote(request, question_id):
         # Always return an httpResponseRedirect after successfully dealing
         # with POST data. This prevent data from being posted twice if a
         # user hits the Back button.
+        print(question.id)
         return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
         
